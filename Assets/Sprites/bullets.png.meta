@@ -1,10 +1,13 @@
 fileFormatVersion: 2
-guid: 9338bf6c7ec16eb4a9ae7f46ca52dd58
+guid: b9885e4bf720344479a61289fef8e851
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -7443756053782179069
-    second: background_0
+      213: 8848993070067138329
+    second: bullets_0
+  - first:
+      213: 1115682805434658061
+    second: bullets_1
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -37,7 +40,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -72,7 +75,7 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 4
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 2048
+    maxTextureSize: 1024
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
@@ -96,40 +99,65 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: background_0
+      name: bullets_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 1920
-        height: 1080
+        width: 24
+        height: 24
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
+      outline:
+      - - {x: 0, y: -12}
+        - {x: 12, y: 0}
+        - {x: 0, y: 12}
+        - {x: -12, y: 0}
+      physicsShape:
+      - - {x: 0, y: -12}
+        - {x: 12, y: 0}
+        - {x: 0, y: 12}
+        - {x: -12, y: 0}
+      tessellationDetail: 0
       bones: []
-      spriteID: 30356abce4772b890800000000000000
-      internalID: -7443756053782179069
+      spriteID: 8cc37e8d70f970a4b90c0d9ee5e9c5c4
+      internalID: 512334150
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bullets_1
+      rect:
+        serializedVersion: 2
+        x: 24
+        y: 0
+        width: 24
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline:
+      - - {x: 0, y: -12}
+        - {x: 12, y: 0}
+        - {x: 0, y: 12}
+        - {x: -12, y: 0}
+      physicsShape:
+      - - {x: 0, y: -12}
+        - {x: 12, y: 0}
+        - {x: 0, y: 12}
+        - {x: -12, y: 0}
+      tessellationDetail: 0
+      bones: []
+      spriteID: be6e0124fb9f8694db1338003910608b
+      internalID: -2096604070
       vertices: []
       indices: 
       edges: []
@@ -138,7 +166,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: bd607a22f320aec4384a19bc9793865a
     internalID: 0
     vertices: []
     indices: 
@@ -146,9 +174,12 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
-      entries: []
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":24.0,"y":24.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"slicingType":3,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
-      background_0: -7443756053782179069
+      bullets_0: 512334150
+      bullets_1: -2096604070
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

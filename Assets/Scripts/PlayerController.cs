@@ -9,6 +9,12 @@ public class PlayerController : MonoBehaviour
     private float objectWidth;
     private float objectHeight;
 
+    // Biến để lưu trữ các đối tượng đạn
+    public GameObject Bullet;
+    public GameObject Bullet01;
+    public GameObject Bullet02;
+
+
     void Start()
     {
         mainCam = Camera.main;
@@ -23,6 +29,7 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+
         Vector3 move = Vector3.zero;
 
         // Sử dụng phím mũi tên thay vì WASD
@@ -34,6 +41,16 @@ public class PlayerController : MonoBehaviour
             move += Vector3.left;
         if (Keyboard.current.rightArrowKey.isPressed)
             move += Vector3.right;
+
+        // Sử dụng phím Space để bắn
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+            // Tạo đạn mới và đặt vị trí bắn
+            GameObject bullet01 = (GameObject)Instantiate(Bullet);
+            bullet01.transform.position = Bullet01.transform.position;
+            GameObject bullet02 = (GameObject)Instantiate(Bullet);
+            bullet02.transform.position = Bullet02.transform.position;
+        }
 
         Vector3 newPos = transform.position + move.normalized * moveSpeed * Time.deltaTime;
 

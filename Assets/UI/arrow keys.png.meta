@@ -222,7 +222,11 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      arrow keys_0: -7264666471689981696
+      arrow keys_1: -138535379895316020
+      arrow keys_2: -4744440004251101593
+      arrow keys_3: 5890999105098735201
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

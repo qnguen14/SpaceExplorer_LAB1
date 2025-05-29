@@ -1251,6 +1251,7 @@ MonoBehaviour:
   Bullet: {fileID: 4001262570887098012, guid: 751e48242188daa4aa972fda1941b03c, type: 3}
   Bullet01: {fileID: 1175519449}
   Bullet02: {fileID: 849272791}
+  shootClip: {fileID: 8300000, guid: 9b2582a34be739245ab897eb6bf573cf, type: 3}
 --- !u!212 &1673601678
 SpriteRenderer:
   m_ObjectHideFlags: 0

@@ -8,18 +8,19 @@ public class PlayerController : MonoBehaviour
     public int maxLives = 3;
     private int currentLives;
 
-    public Image[] lifeImages; // Gắn 3 hình trái tim UI vào đây
+    public Image[] lifeImages;
 
     private Camera mainCam;
     private float minX, maxX, minY, maxY;
     private float objectWidth;
     private float objectHeight;
 
-    // Biến để lưu trữ các đối tượng đạn
     public GameObject Bullet;
     public GameObject Bullet01;
     public GameObject Bullet02;
 
+    public AudioClip shootClip; // Gán file âm thanh vào đây
+    private AudioSource audioSource;
 
     void Start()
     {
@@ -43,11 +44,16 @@ public class PlayerController : MonoBehaviour
 
         currentLives = maxLives;
         UpdateLivesUI();
+
+        audioSource = GetComponent<AudioSource>();
+        if (audioSource == null)
+        {
+            audioSource = gameObject.AddComponent<AudioSource>();
+        }
     }
 
     void Update()
     {
-
         Vector3 move = Vector3.zero;
 
         if (Keyboard.current.upArrowKey.isPressed)
@@ -59,14 +65,15 @@ public class PlayerController : MonoBehaviour
         if (Keyboard.current.rightArrowKey.isPressed)
             move += Vector3.right;
 
-        // Sử dụng phím Space để bắn
-        if(Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
-            // Tạo đạn mới và đặt vị trí bắn
-            GameObject bullet01 = (GameObject)Instantiate(Bullet);
+            GameObject bullet01 = Instantiate(Bullet);
             bullet01.transform.position = Bullet01.transform.position;
-            GameObject bullet02 = (GameObject)Instantiate(Bullet);
+            GameObject bullet02 = Instantiate(Bullet);
             bullet02.transform.position = Bullet02.transform.position;
+
+            if (shootClip != null && audioSource != null)
+                audioSource.PlayOneShot(shootClip);
         }
 
         Vector3 newPos = transform.position + move.normalized * moveSpeed * Time.deltaTime;
@@ -77,7 +84,7 @@ public class PlayerController : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Enemy")) // Gán tag cho thiên thạch hoặc địch
+        if (other.CompareTag("Enemy"))
         {
             currentLives--;
             UpdateLivesUI();
@@ -85,7 +92,7 @@ public class PlayerController : MonoBehaviour
             if (currentLives <= 0)
             {
                 Debug.Log("Game Over!");
-                gameObject.SetActive(false); // Ẩn tàu, có thể load Game Over scene tại đây
+                gameObject.SetActive(false);
             }
         }
     }

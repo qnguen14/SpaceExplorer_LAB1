@@ -7,7 +7,7 @@ public class AsteroidSpawner : MonoBehaviour
     void Start()
     {
         Invoke("RandomAsteroid", maxSpawnRateInSeconds);
-        InvokeRepeating("IncreaseSpawnRate", 0f, 30f); // Increase spawn rate every 10 seconds
+        InvokeRepeating("IncreaseSpawnRate", 0f, 15f); // Increase spawn rate every 10 seconds
     }
 
     // Update is called once per frame

@@ -1,9 +1,17 @@
 ﻿using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
     public float moveSpeed = 5f;
+
+
+    public int maxLives = 3;
+    private int currentLives;
+
+    public Image[] lifeImages;
+
     private Camera mainCam;
     private Vector2 screenBounds;
     private float objectWidth;
@@ -14,6 +22,8 @@ public class PlayerController : MonoBehaviour
     public GameObject Bullet01;
     public GameObject Bullet02;
 
+    public AudioClip shootClip; // Gán file âm thanh vào đây
+    private AudioSource audioSource;
     //hiệu ứng nổ
     public GameObject Explosion;
 
@@ -27,6 +37,15 @@ public class PlayerController : MonoBehaviour
         {
             objectWidth = sr.bounds.extents.x;
             objectHeight = sr.bounds.extents.y;
+        }
+
+        currentLives = maxLives;
+        UpdateLivesUI();
+
+        audioSource = GetComponent<AudioSource>();
+        if (audioSource == null)
+        {
+            audioSource = gameObject.AddComponent<AudioSource>();
         }
     }
 
@@ -53,6 +72,9 @@ public class PlayerController : MonoBehaviour
             bullet01.transform.position = Bullet01.transform.position;
             GameObject bullet02 = (GameObject)Instantiate(Bullet);
             bullet02.transform.position = Bullet02.transform.position;
+
+            if (shootClip != null && audioSource != null)
+                audioSource.PlayOneShot(shootClip);
         }
 
         Vector3 newPos = transform.position + move.normalized * moveSpeed * Time.deltaTime;
@@ -67,6 +89,15 @@ public class PlayerController : MonoBehaviour
     {
         if (other.CompareTag("EnemyShipTag"))
         {
+            currentLives--;
+            UpdateLivesUI();
+
+            if (currentLives <= 0)
+            {
+                Debug.Log("Game Over!");
+                gameObject.SetActive(false);
+            }
+
             PlayExplosion(); // Gọi hàm để phát hiệu ứng nổ            
             //Destroy(gameObject); // Hủy đối tượng người chơi
         }
@@ -77,5 +108,13 @@ public class PlayerController : MonoBehaviour
     {
         GameObject explosion = (GameObject)Instantiate(Explosion);
         explosion.transform.position = transform.position ;
+    }
+
+    void UpdateLivesUI()
+    {
+        for (int i = 0; i < lifeImages.Length; i++)
+        {
+            lifeImages[i].enabled = i < currentLives;
+        }
     }
 }

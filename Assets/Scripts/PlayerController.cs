@@ -14,6 +14,9 @@ public class PlayerController : MonoBehaviour
     public GameObject Bullet01;
     public GameObject Bullet02;
 
+    //hiệu ứng nổ
+    public GameObject Explosion;
+
 
     void Start()
     {
@@ -43,7 +46,7 @@ public class PlayerController : MonoBehaviour
             move += Vector3.right;
 
         // Sử dụng phím Space để bắn
-        if(Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
             // Tạo đạn mới và đặt vị trí bắn
             GameObject bullet01 = (GameObject)Instantiate(Bullet);
@@ -58,5 +61,21 @@ public class PlayerController : MonoBehaviour
         newPos.y = Mathf.Clamp(newPos.y, -screenBounds.y + objectHeight, screenBounds.y - objectHeight);
 
         transform.position = newPos;
+    }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("EnemyShipTag"))
+        {
+            PlayExplosion(); // Gọi hàm để phát hiệu ứng nổ            
+            //Destroy(gameObject); // Hủy đối tượng người chơi
+        }
+
+    }
+
+    void PlayExplosion()
+    {
+        GameObject explosion = (GameObject)Instantiate(Explosion);
+        explosion.transform.position = transform.position ;
     }
 }

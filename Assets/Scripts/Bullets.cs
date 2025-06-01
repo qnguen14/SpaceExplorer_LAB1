@@ -2,7 +2,7 @@
 
 public class Bullets : MonoBehaviour
 {
-    float speed;
+    [SerializeField] float speed;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -21,6 +21,14 @@ public class Bullets : MonoBehaviour
         if (transform.position.y > max.y)
         {
             //Debug.Log("de");
+            Destroy(gameObject);
+        }
+    }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("EnemyShipTag"))
+        {
             Destroy(gameObject);
         }
     }

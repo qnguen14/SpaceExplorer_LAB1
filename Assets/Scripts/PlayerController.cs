@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
     public int maxLives = 3;
     private int currentLives;
 
+    public PauseMenu pauseMenu;
     public Image[] lifeImages;
 
     private Camera mainCam;
@@ -96,10 +97,13 @@ public class PlayerController : MonoBehaviour
             {
                 Debug.Log("Game Over!");
                 gameObject.SetActive(false);
+
+                // Call the GameOver method from the PauseMenu
+                if (pauseMenu != null)
+                    pauseMenu.GameOver();
             }
 
             PlayExplosion(); // Gọi hàm để phát hiệu ứng nổ            
-            //Destroy(gameObject); // Hủy đối tượng người chơi
         }
 
     }

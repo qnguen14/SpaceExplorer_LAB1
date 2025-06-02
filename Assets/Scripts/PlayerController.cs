@@ -18,14 +18,15 @@ public class PlayerController : MonoBehaviour
     private float objectWidth;
     private float objectHeight;
 
-    // Biến để lưu trữ các đối tượng đạn
+    
     public GameObject Bullet;
     public GameObject Bullet01;
     public GameObject Bullet02;
 
-    public AudioClip shootClip; // Gán file âm thanh vào đây
+    public AudioClip shootClip; 
     private AudioSource audioSource;
-    //hiệu ứng nổ
+    
+    public AudioClip explosionSound; //sound for the explosion
     public GameObject Explosion;
 
 
@@ -55,7 +56,7 @@ public class PlayerController : MonoBehaviour
 
         Vector3 move = Vector3.zero;
 
-        // Sử dụng phím mũi tên thay vì WASD
+        
         if (Keyboard.current.upArrowKey.isPressed)
             move += Vector3.up;
         if (Keyboard.current.downArrowKey.isPressed)
@@ -65,10 +66,10 @@ public class PlayerController : MonoBehaviour
         if (Keyboard.current.rightArrowKey.isPressed)
             move += Vector3.right;
 
-        // Sử dụng phím Space để bắn
+        
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            // Tạo đạn mới và đặt vị trí bắn
+            
             GameObject bullet01 = (GameObject)Instantiate(Bullet);
             bullet01.transform.position = Bullet01.transform.position;
             GameObject bullet02 = (GameObject)Instantiate(Bullet);
@@ -95,6 +96,8 @@ public class PlayerController : MonoBehaviour
 
             if (currentLives <= 0)
             {
+                PlayExplosion(); 
+
                 Debug.Log("Game Over!");
                 gameObject.SetActive(false);
 
@@ -102,17 +105,29 @@ public class PlayerController : MonoBehaviour
                 if (pauseMenu != null)
                     pauseMenu.GameOver();
             }
-
-            PlayExplosion(); // Gọi hàm để phát hiệu ứng nổ            
+            else
+            {
+                PlayExplosion(); 
+            }
         }
 
     }
 
     void PlayExplosion()
     {
-        GameObject explosion = (GameObject)Instantiate(Explosion);
-        explosion.transform.position = transform.position ;
+        
+        if (Explosion != null)
+        {
+            GameObject explosion = Instantiate(Explosion, transform.position, Quaternion.identity);
+        }
+
+        
+        if (explosionSound != null && audioSource != null)
+        {
+            audioSource.PlayOneShot(explosionSound);
+        }
     }
+
 
     void UpdateLivesUI()
     {

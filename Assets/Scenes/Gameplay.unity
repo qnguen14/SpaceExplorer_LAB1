@@ -811,7 +811,7 @@ MonoBehaviour:
 '
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e0b3456b9f03e3e47ad7c63d6790d4b4, type: 2}
-  m_sharedMaterial: {fileID: 2972847995561644653, guid: e0b3456b9f03e3e47ad7c63d6790d4b4, type: 2}
+  m_sharedMaterial: {fileID: 4697433843435979423, guid: e0b3456b9f03e3e47ad7c63d6790d4b4, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1967,6 +1967,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1455321278}
   - component: {fileID: 1455321277}
+  - component: {fileID: 1455321279}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -2004,6 +2005,103 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &1455321279
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1455321276}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &1542920250
 GameObject:
   m_ObjectHideFlags: 0
@@ -2064,7 +2162,7 @@ MonoBehaviour:
   m_text: HIGH SCORE
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e0b3456b9f03e3e47ad7c63d6790d4b4, type: 2}
-  m_sharedMaterial: {fileID: 2972847995561644653, guid: e0b3456b9f03e3e47ad7c63d6790d4b4, type: 2}
+  m_sharedMaterial: {fileID: 4697433843435979423, guid: e0b3456b9f03e3e47ad7c63d6790d4b4, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2183,6 +2281,7 @@ MonoBehaviour:
   Bullet01: {fileID: 1175519449}
   Bullet02: {fileID: 849272791}
   shootClip: {fileID: 8300000, guid: 9b2582a34be739245ab897eb6bf573cf, type: 3}
+  explosionSound: {fileID: 8300000, guid: e1cf638dab790394eb7b4272169cd776, type: 3}
   Explosion: {fileID: 5784288843629907162, guid: 1d554397118759b4d8602aa84b693ed0, type: 3}
 --- !u!212 &1673601678
 SpriteRenderer:

@@ -3,7 +3,7 @@ using UnityEngine;
 public class AsteroidController : MonoBehaviour
 {
     public GameObject Explosion;
-
+    public GameObject starPrefab;
     private float speed;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -29,6 +29,7 @@ public class AsteroidController : MonoBehaviour
         if (other.CompareTag("PlayerBulletTag") || other.CompareTag("PlayerShipTag"))
         {
             PlayExplosion();
+            DropStars();
             Destroy(gameObject);
         }
     }
@@ -37,5 +38,16 @@ public class AsteroidController : MonoBehaviour
     {
         GameObject explosion = Instantiate(Explosion);
         explosion.transform.position = transform.position;
+    }
+
+    void DropStars()
+    {
+        int starsToDrop = Random.Range(0, 6); // 0 - 5 sao
+
+        for (int i = 0; i < starsToDrop; i++)
+        {
+            Vector3 spawnOffset = new Vector3(Random.Range(-0.5f, 0.5f), Random.Range(-0.3f, 0.3f), 0);
+            GameObject star = Instantiate(starPrefab, transform.position + spawnOffset, Quaternion.identity);
+        }
     }
 }
